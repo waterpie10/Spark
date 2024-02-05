@@ -22,8 +22,9 @@ $preferences = array(273.0,8.12,5919.44);
 function percentageMatch($preferences,$laptop) {
     $scores = array();
     for ($i = 0; $i < count($preferences);$i++) {
-
+        $scores[$i] = 1 - (($laptop - $preferences) / $preferences);
     }
+    return array_sum($scores) / count($scores);
 }
 
 
