@@ -1,12 +1,47 @@
-#box1 {
+body {
+	font-family: "Poppins", sans-serif;
+	justify-content: center;
+}
+header{
+        height:3em;
+        background-color:#f0f0f0;
+        color:black;
+        text-align: left;
+}
+
+.box1 {
 background-color: #eeeeee;
 border-width: 2px;
 border-color: #595959;
 text-align: center;
 color: #434343;
+width: 70em;
+height: 4em;
+font-size: 1em;
+display: flex;
+justify-content: center;
+align-items: center;
+in-height: 100vh;
+margin-left: auto;
+margin-right: auto;
 }
-#box2 {
+
+.box2 {
 background-color: #434343ff;
 text-align: center;
 color: white;
+text-align: center;
+width: 10em;
+height: 4em;
+font-size: 1em;
+display: flex;
+justify-content: center;
+align-items: center;
+in-height: 100vh;
+margin-left: auto;
+margin-right: auto;
+}
+
+.button:hover{
+	background-color: #3071a9;
 }
