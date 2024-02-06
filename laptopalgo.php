@@ -8,8 +8,12 @@ etc.
 */
 
 /*
-consider 
+consider user's quiz preferences
 
+potential v2 algorithm:
+if match: increase user's prefs by a percentage of the laptop's values
+if not match: decrease user's prefs by a percentage of the laptop's values
+see shift effect for what the percentage is that we decide
 
 */
 
@@ -39,6 +43,18 @@ function updatePreference($match,$preferences,$laptop) {
             $preferences[$i] = $preferences[$i] + (($preferences[$i] - $laptop[$i]) * SHIFTEFFECT);
         }
     }
+}
+
+function updatePreferenceV2 ($match,$preferences,$laptop) {
+    if ($match) {
+        $adjustment = SHIFTEFFECT * 1;
+    } else {
+        $adjustment = SHIFTEFFECT * -1;
+    }
+    for ($i = 0; $i < count($preferences);$i++) {
+        $preferences[$i] = $preferences[$i] + ($laptop[$i] * $adjustment);
+    }
+    return $preferences;
 }
 
 ?>
