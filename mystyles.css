@@ -1,0 +1,12 @@
+#box1 {
+background-color: #eeeeee;
+border-width: 2px;
+border-color: #595959;
+text-align: center;
+color: #434343;
+}
+#box2 {
+background-color: #434343ff;
+text-align: center;
+color: white;
+}
