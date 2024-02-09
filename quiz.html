@@ -5,21 +5,43 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Spark</title>
+    <script>
+        function validateForm() {
+            var buttons = document.querySelectorAll("button[type=submit]");
+            var buttonClicked = false;
+
+            buttons.forEach(function(button) {
+                if (button.clicked) {
+                    buttonClicked = true;
+                }
+            });
+
+            if (!buttonClicked) {
+                alert("Please click at least one button.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
 </head>
 <header>
     <p style="font-weight: bold; font-size: 2em; display: inline;">Spark </p>
 	<p style="display: inline;">The shortest circuit to your dream laptop</p> 
-    <img src="profile.png" alt="Profile image" width="30" height="30" style="display: inline; float: right;">
-    <img src="checkout.png" alt="Checkout image" width="30" height="30" style="display: inline; float: right;">
+    <img src="profile.png" alt="Profile image" width="30" height="30" style="display: inline; float: right; margin-right:1%; margin-top:0.8%;">
+    <img src="checkout.png" alt="Checkout image" width="30" height="30" style="display: inline; float: right;margin-right:1%;margin-top:0.8%">
 </header>
 <body>
 <p class="box3">1. What is the budget for your new laptop? </p>
-<button class="box1">Under £300 </button><p></p>
-<button class="box1">Under £600 </button><p></p>
-<button class="box1">Under £900 </button><p></p>
-<button class="box1">Under £1200 </button><p></p>
-<button class="box1">Over £1200 </button><p></p>
 
-<button class="box2">Submit </button>
+<form onsubmit="return validateForm()">
+    <button class="box1" type="button" onclick="this.clicked = true;">Under 300</button><p></p>
+    <button class="box1" type="button" onclick="this.clicked = true;">Under 600</button><p></p>
+    <button class="box1" type="button" onclick="this.clicked = true;">Under 900</button><p></p>
+    <button class="box1" type="button" onclick="this.clicked = true;">Under 1200</button><p></p>
+    <button class="box1" type="button" onclick="this.clicked = true;">Over 1200</button><p></p>
+
+    <button class = "box2" type="submit">Submit</button>
+</form>
 </body>
 </html>
