@@ -1,22 +1,29 @@
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: Courier, monospace;
+    color: #434343;
 	justify-content: center;
+    background-color: #ffe7e9;
 }
 header{
         height:3em;
         background-color:#f0f0f0;
         color:black;
         text-align: left;
+        align-items: center;
 }
 
 .box1 {
-background-color: #eeeeee;
+    border-radius: 10px; /* Adjust the value to increase or decrease the roundness */
+    border: 1px solid #000; /* Optional: Add border for visual effect */
+    padding: 20px; /* Add padding to the box content */
+
+background-color: #d9d9d9ff;
 border-width: 2px;
 border-color: #595959;
 text-align: center;
 color: #434343;
-width: 70em;
-height: 4em;
+width: 50em;
+height: 1em;
 font-size: 1em;
 display: flex;
 justify-content: center;
@@ -25,14 +32,20 @@ in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
-
+.box1:hover {
+    background-color: #595959;
+    color: #ffffff;
+}
 .box2 {
+    border-radius: 20px; /* Adjust the value to increase or decrease the roundness */
+    border: 1px solid #000; /* Optional: Add border for visual effect */
+    padding: 20px; /* Add padding to the box content */
 background-color: #434343ff;
 text-align: center;
 color: white;
 text-align: center;
 width: 10em;
-height: 4em;
+height: 2em;
 font-size: 1em;
 display: flex;
 justify-content: center;
@@ -41,7 +54,22 @@ in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
-
+.box2:hover{
+    background-color: #666666ff;
+}
+.box3 {
+text-align: center;
+color: #434343;
+width: 50em;
+height: 1em;
+font-size: 1em;
+display: flex;
+justify-content: center;
+align-items: center;
+in-height: 100vh;
+margin-left: auto;
+margin-right: auto;
+}
 .button:hover{
 	background-color: #3071a9;
 }
