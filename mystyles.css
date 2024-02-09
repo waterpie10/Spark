@@ -73,3 +73,7 @@ margin-right: auto;
 .button:hover{
 	background-color: #3071a9;
 }
+.center-image {
+    display: block;
+    margin: 0 auto;
+}
