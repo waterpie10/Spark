@@ -7,7 +7,7 @@
 	<title>Spark</title>
     <script>
         function validateForm() {
-            var buttons = document.querySelectorAll("button[type=submit]");
+            var buttons = document.querySelectorAll("button[type=button]");
             var buttonClicked = false;
 
             buttons.forEach(function(button) {
@@ -34,7 +34,7 @@
 <body>
 <p class="box3">1. What is the budget for your new laptop? </p>
 
-<form onsubmit="return validateForm()">
+<form onsubmit="validateForm()">
     <button class="box1" type="button" onclick="this.clicked = true;">Under 300</button><p></p>
     <button class="box1" type="button" onclick="this.clicked = true;">Under 600</button><p></p>
     <button class="box1" type="button" onclick="this.clicked = true;">Under 900</button><p></p>
