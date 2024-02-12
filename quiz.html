@@ -32,14 +32,24 @@
     <img src="checkout.png" alt="Checkout image" width="30" height="30" style="display: inline; float: right;margin-right:1%;margin-top:0.8%">
 </header>
 <body>
-<p class="box3">1. What is the budget for your new laptop? </p>
 
 <form onsubmit="validateForm()">
-    <button class="box1" type="button" onclick="this.clicked = true;">Under 300</button><p></p>
-    <button class="box1" type="button" onclick="this.clicked = true;">Under 600</button><p></p>
-    <button class="box1" type="button" onclick="this.clicked = true;">Under 900</button><p></p>
-    <button class="box1" type="button" onclick="this.clicked = true;">Under 1200</button><p></p>
-    <button class="box1" type="button" onclick="this.clicked = true;">Over 1200</button><p></p>
+    
+    <div class="question" id="q1">
+        <p class="box3">1. What is the budget for your new laptop? </p>
+        <ul class="radios">
+
+        <li><input class="box1" type="radio" name="budget" id="300"/><label for="300">Under 300</label></li>
+        <li><input class="box1" type="radio" name="budget" id="600"/><label for="600">Under 600</label></li>
+        <li><input class="box1" type="radio" name="budget" id="900"/><label for="900">Under 900</label></li>
+        <li><input class="box1" type="radio" name="budget" id="1200"><label for="1200">Under 1200</label></li>
+        <li><input class="box1" type="radio" name="budget" id="99999"/><label for="99999">Over 1200</label></li>
+        </ul>
+    </div>
+
+
+    <button class="box2" type="button" onclick="backQuestion()">Back</button>
+    <button class="box2" type="button" onclick="nextQuestion()">Next</button>
 
     <button class = "box2" type="submit">Submit</button>
 </form>
