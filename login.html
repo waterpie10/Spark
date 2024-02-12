@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="mystyles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark</title>
+    <style>
+        .container {
+          display: flex; /* Use flexbox */
+        }
+        
+        .left-div {
+          width: 65%; /* Set width to 65% */
+          background-color:#ffe7e9;
+          /* Add other styling properties as needed */
+        }
+        
+        .right-div {
+          width: 35%; /* Set width to 35% */
+          background-color: #666666ff;
+          /* Add other styling properties as needed */
+        }
+      </style>
+</head>
+<header>
+    <p style="font-weight: bold; font-size: 2em; display: inline;">Spark </p>
+	<p style="display: inline;">The shortest circuit to your dream laptop</p> 
+    <img src="profile.png" alt="Profile image" width="30" height="30" style="display: inline; float: right; margin-right:1%; margin-top:0.8%;">
+    <img src="checkout.png" alt="Checkout image" width="30" height="30" style="display: inline; float: right;margin-right:1%;margin-top:0.8%">
+</header>
+<body>
+    <div class="container">
+        <div class="left-div">
+            <p class="box3" style="font-weight:bold;">Login to your account</p><p></p>
+            <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p>
+            <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p>
+            <button class = "box2" type="submit" >Sign in</button>
+        </div>
+        <div class="right-div">
+            <p></p><p class="box3" style="font-weight:bold; color:white; position:absolute; left:45%; font-size: larger">New here?</p><p></p><br><br>    
+            <p class="box3" style="color:white; position: absolute; left:50%">Sign up to find <br> your match today </p>       
+        </div>
+    </div>
+</body>
+</html>
