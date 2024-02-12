@@ -111,3 +111,7 @@ margin-right: auto;
     background-color: #595959;
     color: #ffffff;
 }
+
+.question {
+    display: none;
+}

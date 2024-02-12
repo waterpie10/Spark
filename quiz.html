@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Spark</title>
     <script>
+        /*
+        Old validate form script
+
         function validateForm() {
             var buttons = document.querySelectorAll("button[type=button]");
             var buttonClicked = false;
@@ -23,6 +26,7 @@
 
             return true; // Allow form submission
         }
+        */
     </script>
 </head>
 <header>
@@ -38,20 +42,52 @@
     <div class="question" id="q1">
         <p class="box3">1. What is the budget for your new laptop? </p>
         <ul class="radios">
-
-        <li><input class="box1" type="radio" name="budget" id="300"/><label for="300">Under 300</label></li>
-        <li><input class="box1" type="radio" name="budget" id="600"/><label for="600">Under 600</label></li>
-        <li><input class="box1" type="radio" name="budget" id="900"/><label for="900">Under 900</label></li>
-        <li><input class="box1" type="radio" name="budget" id="1200"><label for="1200">Under 1200</label></li>
-        <li><input class="box1" type="radio" name="budget" id="99999"/><label for="99999">Over 1200</label></li>
+        <li><input type="radio" name="budget" id="300"/><label for="300">Under 300</label></li>
+        <li><input type="radio" name="budget" id="600"/><label for="600">Under 600</label></li>
+        <li><input type="radio" name="budget" id="900"/><label for="900">Under 900</label></li>
+        <li><input type="radio" name="budget" id="1200"><label for="1200">Under 1200</label></li>
+        <li><input type="radio" name="budget" id="99999"/><label for="99999">Over 1200</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q2">
+        <p class="box3">2. What will you primarily use the laptop for?</p>
+        <ul class="radios">
+        <li><input type="radio" name="use" id="general"/><label for="general">General Use (Web browsing, Email, etc.)</label></li>
+        <li><input type="radio" name="use" id="business"/><label for="business">Business tasks</label></li>
+        <li><input type="radio" name="use" id="gaming"/><label for="gaming">Gaming</label></li>
+        <li><input type="radio" name="use" id="creative"><label for="creative">Creative work (Photo/Video editing, Design)</label></li>
+        <li><input type="radio" name="use" id="programming"/><label for="programming">Programming/Development</label></li>
+        <li><input type="radio" name="use" id="educational"/><label for="educational">Educational purposes</label></li>
         </ul>
     </div>
 
 
-    <button class="box2" type="button" onclick="backQuestion()">Back</button>
-    <button class="box2" type="button" onclick="nextQuestion()">Next</button>
+    <button class="box2" type="button" onclick="nextQuestion(-1)">Back</button>
+    <button class="box2" type="button" onclick="nextQuestion(1)">Next</button>
 
     <button class = "box2" type="submit">Submit</button>
 </form>
 </body>
+
+<script>
+var visibleQ = 1;
+const lastQ = 9;
+document.getElementById("q" + visibleQ).style.display = "block";
+
+function nextQuestion(direction) {
+    document.getElementById("q" + visibleQ).style.display = "none";
+    visibleQ += direction;
+    if (visibleQ < 1) {
+        visibleQ = 1;
+    } else if (visibleQ > lastQ) {
+        visibleQ = lastQ;
+    }
+    document.getElementById("q" + visibleQ).style.display = "block";
+}
+
+
+
+
+</script>
+
 </html>
