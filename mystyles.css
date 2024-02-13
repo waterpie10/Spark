@@ -28,7 +28,6 @@ font-size: 1em;
 display: flex;
 justify-content: center;
 align-items: center;
-in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
@@ -51,7 +50,6 @@ font-size: 1em;
 display: flex;
 justify-content: center;
 align-items: center;
-in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
@@ -67,7 +65,6 @@ font-size: 1em;
 display: flex;
 justify-content: center;
 align-items: center;
-in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
@@ -95,7 +92,6 @@ font-size: 1em;
 display: flex;
 justify-content: center;
 align-items: center;
-in-height: 100vh;
 margin-left: auto;
 margin-right: auto; 
 }
@@ -114,11 +110,51 @@ font-size: 1em;
 display: flex;
 justify-content: center;
 align-items: center;
-in-height: 100vh;
 margin-left: auto;
 margin-right: auto;
 }
 .text{
     color:white;
     font-size: 1em;
+}
+
+.radios {
+    list-style-type: none;
+}
+
+.radios input {
+    visibility: hidden;
+}
+
+
+.radios label { /* i copied most of this section from box 1 above */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #d9d9d9ff;
+    border: 2px solid #595959;
+    text-align: center;
+    color: #434343;
+    width: 50em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1em;
+}
+
+.radios label:hover {
+    background-color: #6F6F6F;
+    color: #ffffff;
+}
+
+.radios input:checked + label {
+    background-color: #595959;
+    color: #ffffff;
+}
+
+.question {
+    display: none;
 }
