@@ -11,14 +11,17 @@
         }
         
         .left-div {
-          width: 65%; /* Set width to 65% */
+          width: 65vw; /* Set width to 65% */
           background-color:#ffe7e9;
+          text-align: center;
           /* Add other styling properties as needed */
         }
         
         .right-div {
-          width: 35%; /* Set width to 35% */
+          width: 35vw; /* Set width to 35% */
+          height:100vw;
           background-color: #666666ff;
+          text-align: center;
           /* Add other styling properties as needed */
         }
       </style>
@@ -32,14 +35,15 @@
 <body>
     <div class="container">
         <div class="left-div">
-            <p class="box3" style="font-weight:bold;">Login to your account</p><p></p>
-            <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p>
-            <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p>
-            <button class = "box2" type="submit" >Sign in</button>
+            <p class="text" style="font-weight:bold;color:black;font-size:2em;">Login to your account</p><p></p>
+            <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p><br>
+            <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
+            <button class = "box4" type="submit" >Sign in</button>
         </div>
         <div class="right-div">
-            <p></p><p class="box3" style="font-weight:bold; color:white; position:absolute; left:45%; font-size: larger">New here?</p><p></p><br><br>    
-            <p class="box3" style="color:white; position: absolute; left:50%">Sign up to find <br> your match today </p>       
+            <p></p><p class="text" style="font-weight:bold; color:white; position:block;font-size: 2em">New here?</p><p></p><br>    
+            <p class="text" style="color:white; position: block;">Sign up to find <br> your match today </p>  <br>
+            <button class="box4" type="button" style="background-color:white;color:black;position:block;">Sign up</button><p></p> <br><br><br><br><br><br><br>   
         </div>
     </div>
 </body>
