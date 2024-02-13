@@ -60,7 +60,67 @@
         <li><input type="radio" name="use" id="educational"/><label for="educational">Educational purposes</label></li>
         </ul>
     </div>
-
+    <div class="question" id="q3">
+        <p class="box3">3. How important is portability for you?</p>
+        <ul class="radios">
+        <li><input type="radio" name="portability" id="important3"/><label for="important3">Very important</label></li>
+        <li><input type="radio" name="portability" id="important2"/><label for="important2">Somewhat important</label></li>
+        <li><input type="radio" name="portability" id="important1"/><label for="important1">Not important</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q4">
+        <p class="box3">4. How long do you need the battery to last on a typical day?</p>
+        <ul class="radios">
+        <li><input type="radio" name="battery" id="battery4"/><label for="battery4">Less than 4 hours</label></li>
+        <li><input type="radio" name="battery" id="battery6"/><label for="battery6">4-6 hours</label></li>
+        <li><input type="radio" name="battery" id="battery8"/><label for="battery8">6-8 hours</label></li>
+        <li><input type="radio" name="battery" id="battery10"/><label for="battery10">8+ hours</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q5">
+        <p class="box3">5. Do you have a preference for the Operating System?</p>
+        <ul class="radios">
+        <li><input type="radio" name="os" id="win"/><label for="win">Windows</label></li>
+        <li><input type="radio" name="os" id="macos"/><label for="macos">macOS</label></li>
+        <li><input type="radio" name="os" id="chromeos"/><label for="chromeos">Chrome OS</label></li>
+        <li><input type="radio" name="os" id="noprefos"/><label for="noprefos">No preference</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q6">
+        <p class="box3">6. What size of screen do you prefer?</p>
+        <ul class="radios">
+        <li><input type="radio" name="screen" id="scsmall"/><label for="scsmall">Small</label></li>
+        <li><input type="radio" name="screen" id="scmedium"/><label for="scmedium">Medium</label></li>
+        <li><input type="radio" name="screen" id="sclarge"/><label for="sclarge">Large</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q7">
+        <p class="box3">7. How much storage space do you need?</p>
+        <ul class="radios">
+        <li><input type="radio" name="storage" id="s256"/><label for="s256">Less than 256GB</label></li>
+        <li><input type="radio" name="storage" id="s512"/><label for="s512">256GB-512GB</label></li>
+        <li><input type="radio" name="storage" id="s1024"/><label for="s1024">1TB</label></li>
+        <li><input type="radio" name="storage" id="smore"/><label for="smore">More than 1TB</label></li>
+        <li><input type="radio" name="storage" id="sunsure"/><label for="sunsure">I'm not sure</label></li> <!--in future this will go to another question-->
+        </ul>
+    </div>
+    <div class="question" id="q8">
+        <p class="box3">8. Do you know how much RAM you might need?</p>
+        <ul class="radios">
+        <li><input type="radio" name="ram" id="ramunsure"/><label for="ramunsure">I'm not sure</label></li>
+        <li><input type="radio" name="ram" id="ram8"/><label for="ram8">8GB or less</label></li>
+        <li><input type="radio" name="ram" id="ram16"/><label for="ram16">8-16GB</label></li>
+        <li><input type="radio" name="ram" id="rammore"/><label for="rammore">16GB or more</label></li>
+        </ul>
+    </div>
+    <div class="question" id="q9">
+        <p class="box3">9. How important is a touch screen for you?</p>
+        <ul class="radios">
+        <li><input type="radio" name="touchscreen" id="tsyes"/><label for="tsyes">Must have</label></li>
+        <li><input type="radio" name="touchscreen" id="tsokay"/><label for="tsokay">Would like</label></li>
+        <li><input type="radio" name="touchscreen" id="tsmeh"/><label for="tsmeh">Indifferent</label></li>
+        </ul>
+    </div>
 
     <button class="box2" type="button" onclick="nextQuestion(-1)">Back</button>
     <button class="box2" type="button" onclick="nextQuestion(1)">Next</button>
