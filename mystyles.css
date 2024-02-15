@@ -76,7 +76,7 @@ margin-right: auto;
     margin: 0 auto;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"]{
     border-radius: 10px; /* Adjust the value to increase or decrease the roundness */
     border: 1px solid #000; /* Optional: Add border for visual effect */
     padding: 20px; /* Add padding to the box content */
@@ -174,3 +174,5 @@ margin-right: auto;
     flex: 1;
     padding-right: 50px;
 }
+
+
