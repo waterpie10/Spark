@@ -37,100 +37,104 @@
 </header>
 <body>
 
-<form onsubmit="validateForm()">
+<form onsubmit="validateForm()" name="quiz">
     
     <div class="question" id="q1">
         <p class="box3">1. What is the budget for your new laptop? </p>
         <ul class="radios">
-        <li><input type="radio" name="budget" id="300"/><label for="300">Under 300</label></li>
-        <li><input type="radio" name="budget" id="600"/><label for="600">Under 600</label></li>
-        <li><input type="radio" name="budget" id="900"/><label for="900">Under 900</label></li>
-        <li><input type="radio" name="budget" id="1200"><label for="1200">Under 1200</label></li>
-        <li><input type="radio" name="budget" id="99999"/><label for="99999">Over 1200</label></li>
+        <!--This needs fixing for screen readers!!!!!!-->    
+        <li><input type="radio" onClick="radioSelect()" name="budget" id="300" value="300"/><label for="300">Under 300</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="budget" id="600" value="600"/><label for="600">Under 600</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="budget" id="900" value="900"/><label for="900">Under 900</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="budget" id="1200" value="1200"><label for="1200">Under 1200</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="budget" id="99999" value="99999"/><label for="99999">Over 1200</label></li>
         </ul>
     </div>
     <div class="question" id="q2">
         <p class="box3">2. What will you primarily use the laptop for?</p>
         <ul class="radios">
-        <li><input type="radio" name="use" id="general"/><label for="general">General Use (Web browsing, Email, etc.)</label></li>
-        <li><input type="radio" name="use" id="business"/><label for="business">Business tasks</label></li>
-        <li><input type="radio" name="use" id="gaming"/><label for="gaming">Gaming</label></li>
-        <li><input type="radio" name="use" id="creative"><label for="creative">Creative work (Photo/Video editing, Design)</label></li>
-        <li><input type="radio" name="use" id="programming"/><label for="programming">Programming/Development</label></li>
-        <li><input type="radio" name="use" id="educational"/><label for="educational">Educational purposes</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="general" value="general"/><label for="general">General Use (Web browsing, Email, etc.)</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="business" value="business"/><label for="business">Business tasks</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="gaming" value="gaming"/><label for="gaming">Gaming</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="creative" value="creative"><label for="creative">Creative work (Photo/Video editing, Design)</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="programming" value="programming"/><label for="programming">Programming/Development</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="use" id="educational" value="educational"/><label for="educational">Educational purposes</label></li>
         </ul>
     </div>
     <div class="question" id="q3">
         <p class="box3">3. How important is portability for you?</p>
         <ul class="radios">
-        <li><input type="radio" name="portability" id="important3"/><label for="important3">Very important</label></li>
-        <li><input type="radio" name="portability" id="important2"/><label for="important2">Somewhat important</label></li>
-        <li><input type="radio" name="portability" id="important1"/><label for="important1">Not important</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="portability" id="important3"/><label for="important3">Very important</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="portability" id="important2"/><label for="important2">Somewhat important</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="portability" id="important1"/><label for="important1">Not important</label></li>
         </ul>
     </div>
     <div class="question" id="q4">
         <p class="box3">4. How long do you need the battery to last on a typical day?</p>
         <ul class="radios">
-        <li><input type="radio" name="battery" id="battery4"/><label for="battery4">Less than 4 hours</label></li>
-        <li><input type="radio" name="battery" id="battery6"/><label for="battery6">4-6 hours</label></li>
-        <li><input type="radio" name="battery" id="battery8"/><label for="battery8">6-8 hours</label></li>
-        <li><input type="radio" name="battery" id="battery10"/><label for="battery10">8+ hours</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="battery" id="battery4"/><label for="battery4">Less than 4 hours</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="battery" id="battery6"/><label for="battery6">4-6 hours</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="battery" id="battery8"/><label for="battery8">6-8 hours</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="battery" id="battery10"/><label for="battery10">8+ hours</label></li>
         </ul>
     </div>
     <div class="question" id="q5">
         <p class="box3">5. Do you have a preference for the Operating System?</p>
         <ul class="radios">
-        <li><input type="radio" name="os" id="win"/><label for="win">Windows</label></li>
-        <li><input type="radio" name="os" id="macos"/><label for="macos">macOS</label></li>
-        <li><input type="radio" name="os" id="chromeos"/><label for="chromeos">Chrome OS</label></li>
-        <li><input type="radio" name="os" id="noprefos"/><label for="noprefos">No preference</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="os" id="win"/><label for="win">Windows</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="os" id="macos"/><label for="macos">macOS</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="os" id="chromeos"/><label for="chromeos">Chrome OS</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="os" id="noprefos"/><label for="noprefos">No preference</label></li>
         </ul>
     </div>
     <div class="question" id="q6">
         <p class="box3">6. What size of screen do you prefer?</p>
         <ul class="radios">
-        <li><input type="radio" name="screen" id="scsmall"/><label for="scsmall">Small</label></li>
-        <li><input type="radio" name="screen" id="scmedium"/><label for="scmedium">Medium</label></li>
-        <li><input type="radio" name="screen" id="sclarge"/><label for="sclarge">Large</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="screen" id="scsmall"/><label for="scsmall">Small</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="screen" id="scmedium"/><label for="scmedium">Medium</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="screen" id="sclarge"/><label for="sclarge">Large</label></li>
         </ul>
     </div>
     <div class="question" id="q7">
         <p class="box3">7. How much storage space do you need?</p>
         <ul class="radios">
-        <li><input type="radio" name="storage" id="s256"/><label for="s256">Less than 256GB</label></li>
-        <li><input type="radio" name="storage" id="s512"/><label for="s512">256GB-512GB</label></li>
-        <li><input type="radio" name="storage" id="s1024"/><label for="s1024">1TB</label></li>
-        <li><input type="radio" name="storage" id="smore"/><label for="smore">More than 1TB</label></li>
-        <li><input type="radio" name="storage" id="sunsure"/><label for="sunsure">I'm not sure</label></li> <!--in future this will go to another question-->
+        <li><input type="radio" onClick="radioSelect()" name="storage" id="s256"/><label for="s256">Less than 256GB</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="storage" id="s512"/><label for="s512">256GB-512GB</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="storage" id="s1024"/><label for="s1024">1TB</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="storage" id="smore"/><label for="smore">More than 1TB</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="storage" id="sunsure"/><label for="sunsure">I'm not sure</label></li> <!--in future this will go to another question-->
         </ul>
     </div>
     <div class="question" id="q8">
         <p class="box3">8. Do you know how much RAM you might need?</p>
         <ul class="radios">
-        <li><input type="radio" name="ram" id="ramunsure"/><label for="ramunsure">I'm not sure</label></li>
-        <li><input type="radio" name="ram" id="ram8"/><label for="ram8">8GB or less</label></li>
-        <li><input type="radio" name="ram" id="ram16"/><label for="ram16">8-16GB</label></li>
-        <li><input type="radio" name="ram" id="rammore"/><label for="rammore">16GB or more</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="ram" id="ramunsure"/><label for="ramunsure">I'm not sure</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="ram" id="ram8"/><label for="ram8">8GB or less</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="ram" id="ram16"/><label for="ram16">8-16GB</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="ram" id="rammore"/><label for="rammore">16GB or more</label></li>
         </ul>
     </div>
     <div class="question" id="q9">
         <p class="box3">9. How important is a touch screen for you?</p>
         <ul class="radios">
-        <li><input type="radio" name="touchscreen" id="tsyes"/><label for="tsyes">Must have</label></li>
-        <li><input type="radio" name="touchscreen" id="tsokay"/><label for="tsokay">Would like</label></li>
-        <li><input type="radio" name="touchscreen" id="tsmeh"/><label for="tsmeh">Indifferent</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="touchscreen" id="tsyes"/><label for="tsyes">Must have</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="touchscreen" id="tsokay"/><label for="tsokay">Would like</label></li>
+        <li><input type="radio" onClick="radioSelect()" name="touchscreen" id="tsmeh"/><label for="tsmeh">Indifferent</label></li>
         </ul>
     </div>
 
     <button class="box2" type="button" onclick="nextQuestion(-1)">Back</button>
+    
+    <!--Don't need a next button any more.
     <button class="box2" type="button" onclick="nextQuestion(1)">Next</button>
-
+    -->
     <button class = "box2" type="submit">Submit</button>
 </form>
 </body>
 
 <script>
 var visibleQ = 1;
+var busy = false;
 const lastQ = 9;
 document.getElementById("q" + visibleQ).style.display = "block";
 
@@ -141,11 +145,20 @@ function nextQuestion(direction) {
         visibleQ = 1;
     } else if (visibleQ > lastQ) {
         visibleQ = lastQ;
+        document.quiz.submit();
     }
     document.getElementById("q" + visibleQ).style.display = "block";
+    document.getElementById("q" + visibleQ).style.opacity = "1";
+    busy = false;
 }
 
-
+function radioSelect() {
+    if (busy == false) {
+        busy = true;
+        document.getElementById("q" + visibleQ).style.opacity = "0";
+        setTimeout(nextQuestion.bind(null, 1),300);
+    }
+}
 
 
 </script>
