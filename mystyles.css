@@ -157,6 +157,7 @@ margin-right: auto;
 
 .question {
     display: none;
+    transition: opacity 0.5s;
 }
 
 .name-container {
