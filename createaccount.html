@@ -11,15 +11,16 @@
         }
         
         .left-div {
-          width: 35%; /* Set width to 65% */
-          background-color:#ffe7e9;
+          width: 35vw; /* Set width to 65% */
+          height: 100vw;
+          background-color:#666666ff;
           text-align:center;
           /* Add other styling properties as needed */
         }
         
         .right-div {
-          width: 65%; /* Set width to 35% */
-          background-color: #666666ff;
+          width: 65vw; /* Set width to 35% */
+          background-color: #ffe7e9;
           text-align:center;
           /* Add other styling properties as needed */
         }
@@ -35,12 +36,31 @@
     <div class="container">
         <div class="left-div">
 
-            //text goes here for left bit
-
+          
         </div>
         <div class="right-div">
 
-            //text goes here for right bit
+          <p class="text" style="font-weight:bold;color:black;font-size:2em;">Login to your account</p><p></p>
+          
+          <div class="name-container">
+            <div class="fname">
+              <input type="text" id="fname-entry" name="text-entry" placeholder="First Name" style="width:70%;">
+            </div>
+            
+            <div class="lname">
+              <input type="text" id="lname-entry" name="text-entry" placeholder="Last Name" style="width:70%;">
+            </div>
+          </div>
+          <p></p>
+            <br>
+          <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p><br>
+          <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
+          <input type="text" id="password-reentry" name="text-entry" placeholder="Confirm Password"style="width:50vw;"><p></p><br>
+          <button class = "box4" type="submit" >Create New</button>
+          <br>
+          <p class="text" style="color:grey;font-size:1em;">Already have an account?
+          <a href="login.html" style="font-weight:bold; color:black ;font-size:1em;">Sign in</a></p><p></p>
+          
 
         </div>
     </div>
