@@ -41,7 +41,7 @@
         <div class="right-div">
 
           <p class="text" style="font-weight:bold;color:black;font-size:2em;">Create your account</p><p></p>
-          
+          <form autocomplete="off" onsubmit = "validateSignup()" method="post" id="signup-form">
           <div class="name-container">
             <div class="fname">
               <input type="text" id="fname-entry" name="text-entry" placeholder="First Name" style="width:70%;">
@@ -53,10 +53,15 @@
           </div>
           <p></p>
             <br>
-          <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p><br>
-          <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
-          <input type="text" id="password-reentry" name="text-entry" placeholder="Confirm Password"style="width:50vw;"><p></p><br>
+          <input type="email" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;" ><p></p><br>
+          <input type="password" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
+          <input type="password" id="password-reentry" name="text-entry" placeholder="Confirm Password"style="width:50vw;"><p></p>
+          <div class = "error-box" style="display:none;">
+              <p class = "error-text"></p>
+          </div>
+          <br>
           <button class = "box4" type="submit" >Create New</button>
+          </form>
           <br>
           <p class="text" style="color:grey;font-size:1em;">Already have an account?
           <a href="login.html" style="font-weight:bold; color:black ;font-size:1em;">Sign in</a></p><p></p>
@@ -64,5 +69,59 @@
 
         </div>
     </div>
+
+<script>
+    var email = document.getElementById("email-entry");
+    var password = document.getElementById("password-entry");
+    var passwordReentry = document.getElementById("password-reentry");
+    var fname = document.getElementById("fname-entry");
+    var lname = document.getElementById("lname-entry");
+
+    function validateSignup() {
+      if (email.value == "" || password.value == "" || passwordReentry.value == "" || fname.value == "" || lname.value == "") {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Please fill in all fields";
+        return false;
+      } else if (password.value != passwordReentry.value) {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Passwords do not match";
+        return false;
+      } else if (password.value.length < 8) {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Password must be at least 8 characters long";
+        return false;
+      } else if (validateEmail(email.value) == null){
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Invalid email address";
+        return false;
+      }
+       else if (password.value.includes("password")) {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Password cannot contain the word 'password'";
+        return false;
+      } else if (!/\d/.test(password.value)) {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        document.getElementsByClassName("error-text")[0].innerHTML = "Password must contain a number";
+        return false;
+      }
+      else {
+        document.getElementsByClassName("error-box")[0].style.display = "none";
+        return true;
+      }
+    }
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      validateSignup();
+    });
+
+    window.addEventListener("load", function() {
+      document.getElementById("signup-form").reset();
+    });
+
+    const validateEmail = (email) => {
+      return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+};
+</script>
 </body>
 </html>

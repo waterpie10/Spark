@@ -76,7 +76,7 @@ margin-right: auto;
     margin: 0 auto;
 }
 
-input[type="text"], input[type="number"]{
+input[type="text"], input[type="number"], input[type="password"], input[type="email"] {
     border-radius: 10px; /* Adjust the value to increase or decrease the roundness */
     border: 1px solid #000; /* Optional: Add border for visual effect */
     padding: 20px; /* Add padding to the box content */
@@ -175,4 +175,20 @@ margin-right: auto;
     padding-right: 50px;
 }
 
-
+.error-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Added to align vertically */
+    background-color: #FFCCCC;
+    color: #FF0000;
+    width: 30vw;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.error-text {
+    flex: 1 1 auto;
+    font-size: 16px;
+    text-align: center;
+}

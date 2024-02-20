@@ -35,10 +35,16 @@
 <body>
     <div class="container">
         <div class="left-div">
+            <form onsubmit="validateLogin()" method="post" id="login-form">
             <p class="text" style="font-weight:bold;color:black;font-size:2em;">Login to your account</p><p></p>
-            <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;"><p></p><br>
-            <input type="text" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
+            <input type="text" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;" ><p></p><br>
+            <input type="password" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw; "><p></p>
+            <div class = "error-box" style="display:none;">
+                <p class = "error-text">Invalid email or password</p>
+            </div>
+            <br>
             <button class = "box4" type="submit" >Sign in</button>
+            </form>
         </div>
         <div class="right-div">
             <p></p><p class="text" style="font-weight:bold; color:white; position:block;font-size: 2em">New here?</p><p></p><br>    
@@ -46,5 +52,29 @@
             <button class="box4" type="button" onclick="document.location='createaccount.html'" style="background-color:white;color:black;position:block;">Sign up</button><p></p> <br><br><br><br><br><br><br>   
         </div>
     </div>
+
+<script>
+    var email = document.getElementById("email-entry");
+    var password = document.getElementById("password-entry");
+
+    function validateLogin(event) {
+      if (email.value == "" || password.value == "") {
+        document.getElementsByClassName("error-box")[0].style.display = "block";
+        return false;
+      } else {
+        document.getElementsByClassName("error-box")[0].style.display = "none";
+        return true;
+      }
+    }
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      validateLogin();
+    });
+
+    window.addEventListener("load", function() {
+      document.getElementById("login-form").reset();
+    });
+</script>
 </body>
 </html>
