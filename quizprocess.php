@@ -28,6 +28,8 @@ if (is_numeric($answers["budget"])) {
     die('non numeric budget');
 }
 
+echo('third');
+
 switch ($answers["use"]) {
     case "general":
         $processor = 2.0;
@@ -67,6 +69,8 @@ switch ($answers["portability"]) {
         break;
 }
 
+echo('fourth');
+
 $batteryLife = 5.0;
 
 $os = $answers["os"];
@@ -80,7 +84,9 @@ $memory = 8.0;
 $touchscreen = 1.0;
 
 
-$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES (1,$budget,$processor,$weight,$batteryLife,$os,$screenSize,$storage,$memory,$touchscreen)";
+$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES (1,{$budget},{$processor},{$weight},{$batteryLife},{$os},{$screenSize},{$storage},{$memory},{$touchscreen})";
+
+echo('fifth');
 
 if ($mysqli->query($sql) === TRUE) {
     echo "added to database";
