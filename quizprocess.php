@@ -7,6 +7,8 @@
 
 */
 
+echo('first hello');
+
 $answers = ($_POST);
 require_once('config.inc.php');
 $mysqli = new mysqli($database_host, $database_user, $database_pass, $group_dbnames[1]);
@@ -14,6 +16,8 @@ if($mysqli -> connect_error) {
     echo('connect error');
     die('Connect Error ('.$mysqli -> connect_errno.') '.$mysqli -> connect_error);
 }
+
+echo('second hello');
 
 $userID = 1;
 
