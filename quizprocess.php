@@ -11,6 +11,7 @@ $answers = ($_POST);
 require_once('config.inc.php');
 $mysqli = new mysqli($database_host, $database_user, $database_pass, $group_dbnames[1]);
 if($mysqli -> connect_error) {
+    echo('connect error');
     die('Connect Error ('.$mysqli -> connect_errno.') '.$mysqli -> connect_error);
 }
 
@@ -19,6 +20,7 @@ $userID = 1;
 if (is_numeric($answers["budget"])) {
     $budget = (int)floor($answers["budget"]);
 } else {
+    echo('non numeric');
     die('non numeric budget');
 }
 
