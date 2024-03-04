@@ -7,28 +7,29 @@
 
 */
 
-echo('first hello');
+
+
 
 $answers = ($_POST);
 require_once('config.inc.php');
 $mysqli = new mysqli($database_host, $database_user, $database_pass, $group_dbnames[1]);
 if($mysqli -> connect_error) {
-    echo('connect error');
     die('Connect Error ('.$mysqli -> connect_errno.') '.$mysqli -> connect_error);
 }
 
-echo('second hello');
+foreach ($answers as $q => $a) {
+    echo "$q: $a <br>";
+}
+
 
 $userID = 1;
 
 if (is_numeric($answers["budget"])) {
     $budget = (int)floor($answers["budget"]);
 } else {
-    echo('non numeric');
     die('non numeric budget');
 }
 
-echo('third');
 
 switch ($answers["use"]) {
     case "general":
@@ -69,7 +70,6 @@ switch ($answers["portability"]) {
         break;
 }
 
-echo('fourth');
 
 $batteryLife = 5.0;
 
@@ -84,19 +84,16 @@ $memory = 8.0;
 $touchscreen = 1.0;
 
 
-$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES (1,{$budget},{$processor},{$weight},{$batteryLife},{$os},{$screenSize},{$storage},{$memory},{$touchscreen})";
+$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES (1,{$budget},{$processor},{$weight},{$batteryLife},'$os',{$screenSize},{$storage},{$memory},{$touchscreen})";
 
-echo('fifth');
 
 if ($mysqli->query($sql) === TRUE) {
     echo "added to database";
-  } else {
+} else {
     echo "error: " . $sql . "<br>" . $mysqli->error;
-  }
-
-
-foreach ($answers as $q => $a) {
-    echo "$q: $a <br>";
 }
+
+
+
 
 ?>
