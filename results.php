@@ -38,6 +38,14 @@ mysqli_close($connection);
 <head>
     <!-- Your head content here -->
     <style>
+        
+        @media only screen and (max-width: 800px) {
+            .card {
+                width: 80%;
+                height: auto;
+            }
+        }
+        
         body {
             display: flex;
             justify-content: center;
