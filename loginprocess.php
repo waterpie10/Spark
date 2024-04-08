@@ -13,9 +13,11 @@ if($mysqli -> connect_error) {
 
 $hashedpw = $mysqli -> query("SELECT password FROM tblUsers WHERE email='$email'");
 
-if (password_verify($login["password"],$hashedpw)) {
+if (password_verify($login["password"],$hashedpw -> fetch_row()[0])) {
     $_SESSION["email"] = $email;
     echo('login successful');
+} else {
+    echo('incorrectpw');
 }
 
 ?>

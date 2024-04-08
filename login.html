@@ -45,7 +45,7 @@
 <body>
     <div class="container">
         <div class="left-div">
-            <form onsubmit="validateLogin()" method="post" id="login-form">
+            <form action="loginprocess.php" onsubmit="validateLogin()" method="post" id="login-form">
             <p class="text" style="font-weight:bold;color:black;font-size:2em;">Login to your account</p><p></p>
             <input type="text" id="email-entry" name="email" placeholder="Email address" style="width:50vw;" ><p></p><br>
             <input type="password" id="password-entry" name="password" placeholder="Password"style="width:50vw; "><p></p>
@@ -79,7 +79,9 @@
 
     document.querySelector("form").addEventListener("submit", function(event) {
       event.preventDefault();
-      validateLogin();
+      if (validateLogin()) {
+        document.getElementById("login-form").submit();
+      }
     });
 
     window.addEventListener("load", function() {
