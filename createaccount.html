@@ -47,20 +47,20 @@
         <div class="right-div">
 
           <p class="text" style="font-weight:bold;color:black;font-size:2em;">Create your account</p><p></p>
-          <form autocomplete="off" onsubmit = "validateSignup()" method="post" id="signup-form">
+          <form action="createprocess.php" autocomplete="off" onsubmit = "validateSignup()" method="post" id="signup-form" name="signup-form">
           <div class="name-container">
             <div class="fname">
-              <input type="text" id="fname-entry" name="text-entry" placeholder="First Name" style="width:70%;">
+              <input type="text" id="fname-entry" name="first" placeholder="First Name" style="width:70%;">
             </div>
             
             <div class="lname">
-              <input type="text" id="lname-entry" name="text-entry" placeholder="Last Name" style="width:70%;">
+              <input type="text" id="lname-entry" name="last" placeholder="Last Name" style="width:70%;">
             </div>
           </div>
           <p></p>
             <br>
-          <input type="email" id="email-entry" name="text-entry" placeholder="Email address" style="width:50vw;" ><p></p><br>
-          <input type="password" id="password-entry" name="text-entry" placeholder="Password"style="width:50vw;"><p></p><br>
+          <input type="email" id="email-entry" name="email" placeholder="Email address" style="width:50vw;" ><p></p><br>
+          <input type="password" id="password-entry" name="password" placeholder="Password"style="width:50vw;"><p></p><br>
           <input type="password" id="password-reentry" name="text-entry" placeholder="Confirm Password"style="width:50vw;"><p></p>
           <div class = "error-box" style="display:none;">
               <p class = "error-text"></p>
@@ -118,7 +118,9 @@
 
     document.querySelector("form").addEventListener("submit", function(event) {
       event.preventDefault();
-      validateSignup();
+      if (validateSignup()) {
+        document.getElementById("signup-form").submit();
+      }
     });
 
     window.addEventListener("load", function() {
