@@ -20,4 +20,7 @@ if (password_verify($login["password"],$hashedpw -> fetch_row()[0])) {
     echo('incorrectpw');
 }
 
+
+header('location: home.php')
+
 ?>
