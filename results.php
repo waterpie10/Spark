@@ -8,7 +8,7 @@
 require_once ("config.inc.php");
 
 // Create connection
-$connection = mysqli_connect($database_host, $database_user, $database_pass, $group_dbnames[0]);
+$connection = mysqli_connect($database_host, $database_user, $database_pass, $group_dbnames[1]);
 
 // Check connection
 if (!$connection) {
