@@ -25,9 +25,20 @@ if (isset($_SESSION["email"])) {
 ?>
 </a>
 <img src="computers.png" alt="Image of computers" class="center-image" style= "width: 50vw; height:auto;">
+
+<!--
 <img src="browse.png" style="position: absolute; top:70%;left:22%;">
 <img src="quiz.png" style="position:absolute; top:70%; left:62%;" >
-<a href="quiz.html"  style="position:absolute;top:73%;left:27%;">Browse our <br>selection</a>
-<a href="quiz.html"  style="position:absolute;top:73%;left:67%;">Take our <br>matchmaking quiz!</a>
+-->
+
+
+<a class="homebutton" href="quiz.html">
+<?php 
+if (!isset($_SESSION["email"])) {
+	echo("Log in now!!!!!!");
+}
+?>
+</a>
+<a class="homebutton" href="quiz.html" >Take our <br>matchmaking quiz!</a>
 </body>
 </html>

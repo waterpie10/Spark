@@ -203,3 +203,16 @@ margin-right: auto;
         display: none;
     }
 }
+
+
+.homebutton {
+    border: #000 solid 2px;
+    border-radius: 5px;
+    background-color: #FFCCCC;
+    padding: 4px;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+    height: 3em;
+}
