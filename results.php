@@ -37,7 +37,7 @@ mysqli_close($connection);
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <style> 
        
         body {
             display: flex;
@@ -135,7 +135,7 @@ mysqli_close($connection);
 <body>
     <div class="border-line" id="left-border"></div>
     <div class="border-line" id="right-border"></div>
-
+    
 
     <script>
 
@@ -171,6 +171,8 @@ mysqli_close($connection);
 
             var cards = document.getElementsByClassName("card");
             newCard.style.transform = "rotate(" + cards.length * 5 + "deg)";
+
+            newCard.dataset.id = record[j]["laptopID"];
 
             var img = document.createElement("img");
             img.src = "data:image/jpeg;base64," + record[j]["image"] ;
@@ -245,6 +247,8 @@ mysqli_close($connection);
                 elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
             }
 
+
+
             function closeDragElement() {
                 /* stop moving when mouse button is released:*/
                 document.onmouseup = null;
@@ -265,6 +269,31 @@ mysqli_close($connection);
                 } else {
                     leftQuarter = window.innerWidth / 4;  
                     rightQuarter = 3 * window.innerWidth / 4;  
+                }
+
+                var favourited = null;
+                if (elmnt.offsetLeft < leftQuarter) {
+                    favourited = false;
+                }
+                else if (elmnt.offsetLeft + elmnt.offsetWidth > rightQuarter) {
+                    favourited = true;
+                }
+
+                if (favourited !== null) {
+                    var laptopID = elmnt.dataset.id;
+                    var formData = new FormData();
+                    formData.append('laptopID', laptopID);
+                    formData.append('favourited', favourited);
+
+                    var request = new XMLHttpRequest();
+                    request.open('POST', 'updateDB.php');
+                    request.send(formData);
+
+                    request.onload = function() {
+                        if (request.status === 200) {
+                            console.log(request.responseText);
+                        }
+                    }
                 }
 
                 // Check if the card is in the left or right quarter of the screen
