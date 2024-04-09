@@ -35,4 +35,6 @@ if ($result = $mysqli -> query("SELECT * FROM tblUsers WHERE email='$email'")) {
 
 }
 
+header('location: home.php')
+
 ?>

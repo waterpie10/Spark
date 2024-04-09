@@ -7,7 +7,8 @@
 
 */
 
-
+session_start();
+// $email = $_SESSION["email"];
 
 
 $answers = ($_POST);
@@ -16,6 +17,18 @@ $mysqli = new mysqli($database_host, $database_user, $database_pass, $group_dbna
 if($mysqli -> connect_error) {
     die('Connect Error ('.$mysqli -> connect_errno.') '.$mysqli -> connect_error);
 }
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+    $query = $mysqli -> query("SELECT userID FROM tblUsers WHERE email='$email'");
+    
+    
+    $id = mysqli_fetch_column($query);
+
+} else {
+    die("no account");
+}
+
 
 foreach ($answers as $q => $a) {
     echo "$q: $a <br>";
@@ -84,7 +97,16 @@ $memory = 8.0;
 $touchscreen = 1.0;
 
 
-$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES (1,{$budget},{$processor},{$weight},{$batteryLife},'$os',{$screenSize},{$storage},{$memory},{$touchscreen})";
+
+$sql = "DELETE FROM tblPreferences WHERE userID='$id'";
+
+if ($mysqli->query($sql) === TRUE) {
+    echo "deleted record";
+} else {
+    echo "error: " . $sql . "<br>" . $mysqli->error;
+}
+
+$sql = "INSERT INTO tblPreferences (userID, budget, processor, weight, batteryLife, operatingSystem, screenSize, storage, memory, touchscreen) VALUES ($id,{$budget},{$processor},{$weight},{$batteryLife},'$os',{$screenSize},{$storage},{$memory},{$touchscreen})";
 
 
 if ($mysqli->query($sql) === TRUE) {
@@ -93,6 +115,7 @@ if ($mysqli->query($sql) === TRUE) {
     echo "error: " . $sql . "<br>" . $mysqli->error;
 }
 
+header('location: results.php')
 
 
 
