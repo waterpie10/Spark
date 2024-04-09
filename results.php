@@ -46,20 +46,22 @@ mysqli_close($connection);
             height: 100vh;
             margin: 0;
             position: relative;
+            background-color: #CB6EC4;
         }
 
         .card {
             position: absolute;
             width: 393.75px;
             height: 700px;
-            /* width: 50vw;
-            height: auto; */
             background-color: #fff;
-            border: 1px solid #000;
+            /* border: 1px solid #000; */
             position: absolute;
             cursor: move; /* Change the cursor to a move icon when over the draggable element */
             user-select: none;
             transition: transform 0.5s;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #F8C2FE;
         }
 
 
@@ -85,6 +87,24 @@ mysqli_close($connection);
             z-index: 998;
         }
 
+        #like-img {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+        }
+
+        #dislike-img {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 300px;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -95,21 +115,7 @@ mysqli_close($connection);
         }
 
 
-        .border-line {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 1px; /* Line width */
-            background-color: #f00; /* Line color */
-        }
-
-        #left-border {
-            left: 25%;
-        }
-
-        #right-border {
-            left: 75%;
-        }       
+              
 
         @media only screen and (max-width: 600px) {
             .card {
@@ -117,12 +123,14 @@ mysqli_close($connection);
                 height: 355.56px;
             }
             
-            #left-border {
-                left: 3%; /* Adjusted position for smaller screens */
+            #like-img {
+                width: 50px;
+                height: 50px;
             }
 
-            #right-border {
-                left: 97%; /* Adjusted position for smaller screens */
+            #dislike-img {
+                width: 50px;
+                height: 50px;
             }
 
         }
@@ -133,10 +141,10 @@ mysqli_close($connection);
     </style>
 </head>
 <body>
-    <div class="border-line" id="left-border"></div>
-    <div class="border-line" id="right-border"></div>
-    
 
+    <img id="like-img" src="like.png" alt="Like">
+    <img id="dislike-img" src="dislike.png" alt="Dislike">
+    
     <script>
 
         var jsonData = <?php echo $jsonData; ?>;
