@@ -36,16 +36,9 @@ mysqli_close($connection);
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Your head content here -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        
-        @media only screen and (max-width: 800px) {
-            .card {
-                width: 80%;
-                height: auto;
-            }
-        }
-        
+       
         body {
             display: flex;
             justify-content: center;
@@ -59,12 +52,21 @@ mysqli_close($connection);
             position: absolute;
             width: 393.75px;
             height: 700px;
+            /* width: 50vw;
+            height: auto; */
             background-color: #fff;
             border: 1px solid #000;
             position: absolute;
             cursor: move; /* Change the cursor to a move icon when over the draggable element */
             user-select: none;
             transition: transform 0.5s;
+        }
+
+
+        .card img {
+            width: 100%;
+            height: auto;
+
         }
 
         .card.moved {
@@ -92,41 +94,48 @@ mysqli_close($connection);
             }
         }
 
-        .quarter-line {
-            position: absolute;
+
+        .border-line {
+            position: fixed;
             top: 0;
             bottom: 0;
-            width: 0;
-            border-left: 1px solid #000;
+            width: 1px; /* Line width */
+            background-color: #f00; /* Line color */
         }
 
-        #firstquarter {
+        #left-border {
             left: 25%;
         }
 
-        #secondquarter {
-            left: 50%;
-        }
-
-        #thirdquarter {
+        #right-border {
             left: 75%;
+        }       
+
+        @media only screen and (max-width: 600px) {
+            .card {
+                width: 200px;
+                height: 355.56px;
+            }
+            
+            #left-border {
+                left: 3%; /* Adjusted position for smaller screens */
+            }
+
+            #right-border {
+                left: 97%; /* Adjusted position for smaller screens */
+            }
+
         }
 
-        #fourthquarter {
-            left: 100%;
-        }
 
 
         
     </style>
 </head>
 <body>
-    <div class="quarter-line" id="firstquarter"></div>
-    <div class="quarter-line" id="secondquarter"></div>
-    <div class="quarter-line" id="thirdquarter"></div>
-    <div class="quarter-line" id="fourthquarter"></div>
+    <div class="border-line" id="left-border"></div>
+    <div class="border-line" id="right-border"></div>
 
-    <!-- Your other body content here -->
 
     <script>
 
@@ -144,7 +153,11 @@ mysqli_close($connection);
                 cards[i].style.position = "absolute";
                 cards[i].style.left = (initialLeft + i * 20) + 'px'; // Adjust the left position based on index
                 cards[i].style.transition = 'transform 0.5s'; // Add a transition to the transform property
-                cards[i].style.transform = 'rotate(' + i * 5 + 'deg)'; // Rotate the card based on index
+                if (window.innerWidth <= 600) {
+                    cards[i].style.transform = 'rotate(' + i * 2.5 + 'deg)'; // Rotate and scale the card based on index
+                } else {
+                    cards[i].style.transform = 'rotate(' + i * 5 + 'deg)'; // Rotate and scale the card based on index
+                }
             }
         }
 
@@ -161,28 +174,36 @@ mysqli_close($connection);
 
             var img = document.createElement("img");
             img.src = "data:image/jpeg;base64," + record[j]["image"] ;
-            img.style.width = "393.75px";
-            img.style.height = "393.75px";
             
             newCard.appendChild(img);
 
             var model = document.createElement("p");
             model.textContent = "Model: " + record[j]["Model"];
-            model.style.fontSize = "35px";
+
+            if (window.innerWidth <= 600) {
+                model.style.fontSize = "14px";
+            } else {
+                model.style.fontSize = "35px";
+            }
             model.style.fontWeight = "bold";
             model.style.textAlign = "center";
             newCard.appendChild(model);
 
             var price = document.createElement("p");
             price.textContent = "Price: $" + record[j]["price"];
-            price.style.fontSize = "35px";
+    
+            if (window.innerWidth <= 600) {
+                model.style.fontSize = "14px";
+            } else {
+                model.style.fontSize = "35px";
+            }
             price.style.fontWeight = "bold";
             price.style.textAlign = "center";
             newCard.appendChild(price);
 
             document.body.appendChild(newCard);
             dragElement(newCard);
-            // fanOutCards();
+
             j++;
         }
 
@@ -193,28 +214,32 @@ mysqli_close($connection);
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
             elmnt.onmousedown = dragMouseDown;
+            elmnt.ontouchstart = dragMouseDown;
 
             function dragMouseDown(e) {
                 e = e || window.event;
                 e.preventDefault();
                 // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
+                pos3 = e.clientX || e.touches[0].clientX;
+                pos4 = e.clientY || e.touches[0].clientY;
                 document.onmouseup = closeDragElement;
+                document.ontouchend = closeDragElement;
                 // call a function whenever the cursor moves:
                 document.onmousemove = elementDrag;
+                document.ontouchmove = elementDrag;
 
                 // Remove the transition property during the drag operation 
                 elmnt.style.transition = "";
+
             }
 
             function elementDrag(e) {
                 e = e || window.event;
                 // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
+                pos1 = pos3 - (e.clientX || e.touches[0].clientX);
+                pos2 = pos4 - (e.clientY || e.touches[0].clientY);
+                pos3 = e.clientX || e.touches[0].clientX;
+                pos4 = e.clientY || e.touches[0].clientY;
                 // set the element's new position:
                 elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
                 elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
@@ -224,6 +249,8 @@ mysqli_close($connection);
                 /* stop moving when mouse button is released:*/
                 document.onmouseup = null;
                 document.onmousemove = null;
+                document.ontouchend = null;
+                document.ontouchmove = null;   
 
                 // Calculate the center position
                 var centerX = (window.innerWidth / 2) - (elmnt.offsetWidth / 2);
@@ -231,8 +258,14 @@ mysqli_close($connection);
 
 
                 // Calculate the left and right quarter of the screen
-                var leftQuarter = window.innerWidth / 4;
-                var rightQuarter = 3 * window.innerWidth / 4;
+                var leftQuarter, rightQuarter;
+                if (window.innerWidth <= 600) {  
+                    leftQuarter = window.innerWidth * 0.03;  
+                    rightQuarter = window.innerWidth * 0.97;  
+                } else {
+                    leftQuarter = window.innerWidth / 4;  
+                    rightQuarter = 3 * window.innerWidth / 4;  
+                }
 
                 // Check if the card is in the left or right quarter of the screen
                 if (elmnt.offsetLeft < leftQuarter || elmnt.offsetLeft + elmnt.offsetWidth > rightQuarter) {
