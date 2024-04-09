@@ -13,7 +13,7 @@ session_start();
 
 $answers = ($_POST);
 require_once('config.inc.php');
-$mysqli = new mysqli($database_host, $database_user, $database_pass, $group_dbnames[1]);
+$mysqli = new mysqli($database_host, $database_user, $database_pass, "2023_comp10120_x10");
 if($mysqli -> connect_error) {
     die('Connect Error ('.$mysqli -> connect_errno.') '.$mysqli -> connect_error);
 }
