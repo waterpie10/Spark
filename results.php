@@ -6,6 +6,10 @@
 // $database_name = "2023_comp10120_x10";  // Group database name
 session_start();
 require_once ("config.inc.php");
+define("SHIFTEFFECT",0.05);
+define("BUDGETEXTRA",1.10);
+
+
 
 // Create connection
 $connection = mysqli_connect($database_host, $database_user, $database_pass, "2023_comp10120_x10");
@@ -29,6 +33,10 @@ if (isset($_SESSION["email"])) {
 }
 
 
+// SQL query to read data from tblLaptop
+$query = "SELECT * FROM tblPreferences WHERE userID=$id";
+$result = mysqli_query($connection, $query);
+$preferences = mysqli_fetch_assoc($result);
 
 
 // SQL query to read data from tblLaptop
@@ -40,8 +48,17 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($row["image"] != null) {
         $row["image"] = base64_encode($row["image"]);
     }
-    $data[] = $row;
+
+    if ($preferences["budget"] * BUDGETEXTRA > $row["price"]) {
+        $data[] = $row;
+    }
+
+
 }
+
+// play with the php data before converting to json
+
+
 
 $jsonData = json_encode($data);
 
