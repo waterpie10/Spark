@@ -4,7 +4,7 @@
 // $database_user = "root";  // Your username
 // $database_pass = "";  // Your password
 // $database_name = "2023_comp10120_x10";  // Group database name
-
+session_start();
 require_once ("config.inc.php");
 
 // Create connection
@@ -14,6 +14,22 @@ $connection = mysqli_connect($database_host, $database_user, $database_pass, "20
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+    $query = $connection -> query("SELECT userID FROM tblUsers WHERE email='$email'");
+    
+    
+    $id = mysqli_fetch_column($query);
+    $_SESSION["id"] = $id;
+
+} else {
+    header('location: login.php');
+}
+
+
+
 
 // SQL query to read data from tblLaptop
 $query = "SELECT * FROM tblLaptop";  // Adjust the query to fetch the data you need
