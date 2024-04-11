@@ -209,6 +209,7 @@ mysqli_close($connection);
             }
         }
 
+
         function createCard(record, zIndex){
 
             var newCard = document.createElement("div");
@@ -255,10 +256,31 @@ mysqli_close($connection);
             dragElement(newCard);
 
             j++;
+
+            if (j < jsonData.length) {
+                createCard(jsonData, 999 - j);
+                fanOutCards();
+            } else {
+                displayEndMessage();
+            }
+
         }
 
         for (var i = 0; i < 3; i++) {
             createCard(jsonData, 999 - i);
+        }
+
+        function displayEndMessage() {
+            var endMessage = document.createElement("p");
+            endMessage.textContent = "No more laptops to show";
+            endMessage.style.position = "absolute";
+            endMessage.style.top = "50%";
+            endMessage.style.left = "50%";
+            endMessage.style.transform = "translate(-50%, -50%)";
+            endMessage.style.fontSize = "35px";
+            endMessage.style.fontWeight = "bold";
+            endMessage.style.textAlign = "center";
+            document.body.appendChild(endMessage);
         }
 
         function dragElement(elmnt) {
