@@ -50,7 +50,14 @@ while ($row = mysqli_fetch_assoc($result)) {
     }
 
     if ($preferences["budget"] * BUDGETEXTRA > $row["price"]) {
-        $data[] = $row;
+        $laptopID = $row["laptopID"];
+        $query = "SELECT * FROM tblSwipe WHERE userID=$id AND laptopID=$laptopID";
+        $swiperesult = mysqli_query($connection, $query);
+        $swipe = mysqli_fetch_assoc($swiperesult);
+        
+        if ($swipe == null) {
+            $data[] = $row;
+        }
     }
 
 
