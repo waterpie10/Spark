@@ -257,12 +257,12 @@ mysqli_close($connection);
 
             j++;
 
-            if (j < jsonData.length) {
-                createCard(jsonData, 999 - j);
-                fanOutCards();
-            } else {
-                displayEndMessage();
-            }
+            // if (j < jsonData.length) {
+            //     createCard(jsonData, 999 - j);
+            //     fanOutCards();
+            // } else {
+            //     displayEndMessage();
+            // }
 
         }
 
@@ -270,18 +270,18 @@ mysqli_close($connection);
             createCard(jsonData, 999 - i);
         }
 
-        function displayEndMessage() {
-            var endMessage = document.createElement("p");
-            endMessage.textContent = "No more laptops to show";
-            endMessage.style.position = "absolute";
-            endMessage.style.top = "50%";
-            endMessage.style.left = "50%";
-            endMessage.style.transform = "translate(-50%, -50%)";
-            endMessage.style.fontSize = "35px";
-            endMessage.style.fontWeight = "bold";
-            endMessage.style.textAlign = "center";
-            document.body.appendChild(endMessage);
-        }
+        // function displayEndMessage() {
+        //     var endMessage = document.createElement("p");
+        //     endMessage.textContent = "No more laptops to show";
+        //     endMessage.style.position = "absolute";
+        //     endMessage.style.top = "50%";
+        //     endMessage.style.left = "50%";
+        //     endMessage.style.transform = "translate(-50%, -50%)";
+        //     endMessage.style.fontSize = "35px";
+        //     endMessage.style.fontWeight = "bold";
+        //     endMessage.style.textAlign = "center";
+        //     document.body.appendChild(endMessage);
+        // }
 
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
