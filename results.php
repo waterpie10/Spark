@@ -4,8 +4,12 @@
 // $database_user = "root";  // Your username
 // $database_pass = "";  // Your password
 // $database_name = "2023_comp10120_x10";  // Group database name
-
+session_start();
 require_once ("config.inc.php");
+define("SHIFTEFFECT",0.05);
+define("BUDGETEXTRA",1.10);
+
+
 
 // Create connection
 $connection = mysqli_connect($database_host, $database_user, $database_pass, "2023_comp10120_x10");
@@ -14,6 +18,26 @@ $connection = mysqli_connect($database_host, $database_user, $database_pass, "20
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+    $query = $connection -> query("SELECT userID FROM tblUsers WHERE email='$email'");
+    
+    
+    $id = mysqli_fetch_column($query);
+    $_SESSION["id"] = $id;
+
+} else {
+    header('location: login.php');
+}
+
+
+// SQL query to read data from tblLaptop
+$query = "SELECT * FROM tblPreferences WHERE userID=$id";
+$result = mysqli_query($connection, $query);
+$preferences = mysqli_fetch_assoc($result);
+
 
 // SQL query to read data from tblLaptop
 $query = "SELECT * FROM tblLaptop";  // Adjust the query to fetch the data you need
@@ -24,8 +48,24 @@ while ($row = mysqli_fetch_assoc($result)) {
     if ($row["image"] != null) {
         $row["image"] = base64_encode($row["image"]);
     }
-    $data[] = $row;
+
+    if ($preferences["budget"] * BUDGETEXTRA > $row["price"]) {
+        $laptopID = $row["laptopID"];
+        $query = "SELECT * FROM tblSwipe WHERE userID=$id AND laptopID=$laptopID";
+        $swiperesult = mysqli_query($connection, $query);
+        $swipe = mysqli_fetch_assoc($swiperesult);
+        
+        if ($swipe == null) {
+            $data[] = $row;
+        }
+    }
+
+
 }
+
+// play with the php data before converting to json
+
+
 
 $jsonData = json_encode($data);
 
@@ -169,6 +209,7 @@ mysqli_close($connection);
             }
         }
 
+
         function createCard(record, zIndex){
 
             var newCard = document.createElement("div");
@@ -215,11 +256,32 @@ mysqli_close($connection);
             dragElement(newCard);
 
             j++;
+
+            // if (j < jsonData.length) {
+            //     createCard(jsonData, 999 - j);
+            //     fanOutCards();
+            // } else {
+            //     displayEndMessage();
+            // }
+
         }
 
         for (var i = 0; i < 3; i++) {
             createCard(jsonData, 999 - i);
         }
+
+        // function displayEndMessage() {
+        //     var endMessage = document.createElement("p");
+        //     endMessage.textContent = "No more laptops to show";
+        //     endMessage.style.position = "absolute";
+        //     endMessage.style.top = "50%";
+        //     endMessage.style.left = "50%";
+        //     endMessage.style.transform = "translate(-50%, -50%)";
+        //     endMessage.style.fontSize = "35px";
+        //     endMessage.style.fontWeight = "bold";
+        //     endMessage.style.textAlign = "center";
+        //     document.body.appendChild(endMessage);
+        // }
 
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

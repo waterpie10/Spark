@@ -16,11 +16,26 @@
 <a href="login.php" style="text-align:center; font-size: 2em;">
 <?php
 session_start();
+require_once ("config.inc.php");
+$connection = mysqli_connect($database_host, $database_user, $database_pass, "2023_comp10120_x10");
+
 if (isset($_SESSION["email"])) {
 	$email = $_SESSION['email'];
 	echo("Hi $email! Not you? Log out.");
+
+    $query = $connection -> query("SELECT userID FROM tblUsers WHERE email='$email'");
+
+    $id = mysqli_fetch_column($query);
+    // $_SESSION["id"] = $id;
+
+	$query = "SELECT * FROM tblPreferences WHERE userID=$id";
+	$result = mysqli_query($connection, $query);
+	$prefpresence = mysqli_fetch_assoc($result);
+	$pref = $prefpresence == null ? 0 : 1;
+
 } else {
 	echo("Not logged in!");
+	$pref = 0;
 }
 ?>
 </a>
@@ -31,14 +46,9 @@ if (isset($_SESSION["email"])) {
 <img src="quiz.png" style="position:absolute; top:70%; left:62%;" >
 -->
 
-
-<a class="homebutton" href="quiz.html">
-<?php 
-if (!isset($_SESSION["email"])) {
-	echo("Log in now!!!!!!");
-}
-?>
-</a>
-<a class="homebutton" href="quiz.html" >Take our <br>matchmaking quiz!</a>
+<a class="box4" href="login.php" <?php if (isset($_SESSION["email"])) { echo "style=\"display:none;\"";}?>>Log in now!</a>
+<a class="box4" href="createaccount.html" <?php if (isset($_SESSION["email"])) { echo "style=\"display:none;\"";}?>>Create an account!</a>
+<a class="box4" href="quiz.html" <?php if (!isset($_SESSION["email"])) { echo "style=\"display:none;\"";}?>>Take our matchmaking quiz!</a>
+<a class="box4" href="results.php" <?php if (!$pref) { echo "style=\"display:none;\"";}?>>Swipe laptops!</a>
 </body>
 </html>
