@@ -167,7 +167,7 @@ $jsonData = json_encode($data);
 
 	button.addEventListener("click", function(){
 		// Send a POST request to updateRecord.php
-		var laptopID = elmnt.dataset.id;
+		var laptopID = record[index]["laptopID"];
 		var favourited = false;
 		var formData = new FormData();
 		formData.append("laptopID", laptopID);
