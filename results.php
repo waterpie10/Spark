@@ -56,12 +56,23 @@ while ($row = mysqli_fetch_assoc($result)) {
         $swipe = mysqli_fetch_assoc($swiperesult);
         
         if ($swipe == null) {
+            $prefArray = array("processingSpeed"=>"processor","weight"=>"weight","batteryLife"=>"batteryLife","RAM"=>"memory","storage"=>"storage","touchScreen"=>"touchscreen");
+            $scores = array();
+            foreach($prefArray as $lt => $p) {
+                $scores[] = 1 - (($row[$lt] - $preferences[$p]) / $preferences[$p]);
+            }
+            $row["score"] = array_sum($scores) / count($scores);
+            
             $data[] = $row;
         }
     }
 
 
 }
+
+usort($data, function($a,$b) {
+    return $b["score"] <=> $a["score"];
+});
 
 // play with the php data before converting to json
 
@@ -230,7 +241,7 @@ mysqli_close($connection);
 
             var model = document.createElement("p");
             model.textContent = "Model: " + record[j]["Model"];
-
+            //model.textContent = "Model: " + record[j]["Model"] + record[j]["score"];
             if (window.innerWidth <= 600) {
                 model.style.fontSize = "14px";
             } else {
