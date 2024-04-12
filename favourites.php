@@ -182,7 +182,11 @@ $jsonData = json_encode($data);
 				console.log(this.responseText);
 			}
 		};
+
+		// Remove the card from the DOM
+		card.remove();
 	})
+
 	};
 
 	var i = 0;
