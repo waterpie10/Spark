@@ -50,5 +50,6 @@ if (isset($_SESSION["email"])) {
 <a class="box4" href="createaccount.html" <?php if (isset($_SESSION["email"])) { echo "style=\"display:none;\"";}?>>Create an account!</a>
 <a class="box4" href="quiz.html" <?php if (!isset($_SESSION["email"])) { echo "style=\"display:none;\"";}?>>Take our matchmaking quiz!</a>
 <a class="box4" href="results.php" <?php if (!$pref) { echo "style=\"display:none;\"";}?>>Swipe laptops!</a>
+<a class="box4" href="favourites.php" <?php if (!$pref) { echo "style=\"display:none;\"";}?>>See your favourites!</a>
 </body>
 </html>
