@@ -25,7 +25,7 @@ $id = $_SESSION["id"];
 // SQL query to read data from tblLaptop
 $query = "UPDATE tblSwipe SET favourited = $favourited WHERE laptopID = $laptopID AND userID = $id"; 
 $stmt = mysqli_prepare($connection, $query);
-mysqli_stmt_bind_param($stmt, "ii", $laptopID, $favourited);
+//mysqli_stmt_bind_param($stmt, "ii", $laptopID, $favourited);
 mysqli_stmt_execute($stmt);
 
 mysqli_close($connection);
