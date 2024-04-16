@@ -254,7 +254,7 @@ mysqli_close($connection);
 
             var model = document.createElement("p");
             model.textContent = "Model: " + record[j]["Model"];
-            model.textContent = "Model: " + record[j]["Model"] + record[j]["score"];
+            //model.textContent = "Model: " + record[j]["Model"] + record[j]["score"];
             if (window.innerWidth <= 600) {
                 model.style.fontSize = "14px";
             } else {
