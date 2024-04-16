@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             $prefArray = array("processingSpeed"=>"processor","weight"=>"weight","batteryLife"=>"batteryLife","RAM"=>"memory","storage"=>"storage","touchScreen"=>"touchscreen");
             $scores = array();
             foreach($prefArray as $lt => $p) {
-                $scores[] = 1 - (($row[$lt] - $preferences[$p]) / $preferences[$p]);
+                $scores[] = 1 - (($preferences[$p] - $row[$lt]) / $preferences[$p]) > 1 ? 1 : 1 - (($preferences[$p] - $row[$lt]) / $preferences[$p]);
             }
             $row["score"] = array_sum($scores) / count($scores);
             
@@ -156,6 +156,19 @@ mysqli_close($connection);
             height: 300px;
         }
 
+        #back {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+            font-size: 2em;
+            text-decoration: none;
+            width: 1.5em;
+            text-align: center;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -192,7 +205,7 @@ mysqli_close($connection);
     </style>
 </head>
 <body>
-
+    <a href="home.php" id="back">&#8962;</a>
     <img id="like-img" src="like.png" alt="Like">
     <img id="dislike-img" src="dislike.png" alt="Dislike">
     
@@ -241,7 +254,7 @@ mysqli_close($connection);
 
             var model = document.createElement("p");
             model.textContent = "Model: " + record[j]["Model"];
-            //model.textContent = "Model: " + record[j]["Model"] + record[j]["score"];
+            model.textContent = "Model: " + record[j]["Model"] + record[j]["score"];
             if (window.innerWidth <= 600) {
                 model.style.fontSize = "14px";
             } else {
